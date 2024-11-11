@@ -1,11 +1,95 @@
-/* Style your page here */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #f9a8d4, #feca57);
-    color: #333;
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
-/* Add more styles as needed */
+
+/* Background styling */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('path/to/floral-background.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #333;
+    text-align: center;
+}
+
+/* Main container styling */
+.container {
+    width: 80%;
+    max-width: 800px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-top: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #e74c3c;
+    margin-bottom: 20px;
+}
+
+.photo img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-top: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+p {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+/* Countdown timer styling at the bottom */
+.countdown {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f9e1e1;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.countdown h2 {
+    color: #e74c3c;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+#timer {
+    font-size: 1.2em;
+    color: #333;
+}
+
+/* Love letter typing effect styling */
+.love-letter {
+    margin-top: 20px;
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #555;
+}
+
+.love-letter h2 {
+    font-size: 1.8em;
+    color: #e74c3c;
+    margin-bottom: 15px;
+}
