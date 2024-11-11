@@ -9,6 +9,17 @@ body {
     font-family: 'Dancing Script', cursive, 'Arial', sans-serif; /* Romantic font */
     color: #3e1c41; /* Deep purple color */
     background-color: #fce4ec; /* Soft pink background */
+    background-image: 
+        url('https://media.giphy.com/media/2w9onYLO3htT2/giphy.gif'), /* First Love GIF */
+        url('https://media.giphy.com/media/3o6Zt5lIjl7mnTyVbK/giphy.gif'), /* Second Love GIF */
+        url('https://media.giphy.com/media/6nJmKXnZNEHg6/giphy.gif'), /* Third Love GIF */
+        url('https://media.giphy.com/media/1o9wTnfyHlCzq3JMLh/giphy.gif'); /* Fourth Love GIF */
+    
+    /* Define positioning for each GIF */
+    background-position: top left, top right, bottom left, bottom right;
+    background-size: 150px, 150px, 150px, 150px; /* Adjust size of GIFs */
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat; /* Prevent repeating */
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +28,7 @@ body {
 }
 
 header {
-    background-color: #ff8b94; /* Light romantic pink */
+    background-color: rgba(255, 139, 148, 0.9); /* Semi-transparent pink to see the background */
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -43,7 +54,7 @@ h1 {
 }
 
 #countdown div {
-    background: #ff8b94; /* Light pink */
+    background: rgba(255, 139, 148, 0.8); /* Semi-transparent pink */
     color: #fff;
     padding: 20px;
     border-radius: 12px;
