@@ -8,7 +8,7 @@
 body {
     font-family: 'Dancing Script', cursive, 'Arial', sans-serif; /* Romantic font */
     color: #3e1c41; /* Deep purple color */
-    background-color: #fce4ec; /* Soft pink background */
+    background: linear-gradient(to right, #fce4ec, #ff8b94); /* Soft pink gradient background */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@ body {
 }
 
 header {
-    background-color: #ff8b94; /* Light romantic pink */
+    background-color: rgba(255, 139, 148, 0.9); /* Semi-transparent pink */
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -43,7 +43,7 @@ h1 {
 }
 
 #countdown div {
-    background: #ff8b94; /* Light pink */
+    background: rgba(255, 139, 148, 0.8); /* Semi-transparent pink */
     color: #fff;
     padding: 20px;
     border-radius: 12px;
