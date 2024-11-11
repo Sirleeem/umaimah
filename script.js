@@ -31,4 +31,22 @@ const messageLines = [
 
 let lineIndex = 0;
 let charIndex = 0;
-const speed = 50; 
+const speed = 50;  // Typing speed in milliseconds
+const messageElement = document.getElementById("loveMessage");
+
+function typeMessage() {
+    if (lineIndex < messageLines.length) {
+        if (charIndex < messageLines[lineIndex].length) {
+            messageElement.innerHTML += messageLines[lineIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(typeMessage, speed);
+        } else {
+            messageElement.innerHTML += "<br><br>";
+            charIndex = 0;
+            lineIndex++;
+            setTimeout(typeMessage, speed * 10);  // Pause before starting next line
+        }
+    }
+}
+
+typeMessage();
