@@ -3,29 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Insom</title>
+    <title>To My Beloved Insom</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="content">
+    <header>
         <h1>To My Beloved Insom</h1>
-
-        <!-- Countdown Timer -->
-        <div class="countdown">
-            <p>We’ve been together for:</p>
-            <div id="timer">
-                <span id="days">0</span> Days
-                <span id="hours">0</span> Hours
-                <span id="minutes">0</span> Minutes
-                <span id="seconds">0</span> Seconds
+    </header>
+    <main>
+        <section class="counter-section">
+            <h2>Our Time Together</h2>
+            <div id="countdown">
+                <div><span id="days">0</span><p>Days</p></div>
+                <div><span id="hours">0</span><p>Hours</p></div>
+                <div><span id="minutes">0</span><p>Minutes</p></div>
+                <div><span id="seconds">0</span><p>Seconds</p></div>
             </div>
-        </div>
-
-        <!-- Love Letter Section -->
-        <div class="love-letter" id="letter">
-            <!-- The love letter text will appear here with JavaScript -->
-        </div>
-    </div>
+        </section>
+        
+        <section class="message-section">
+            <h2>A Message for You</h2>
+            <p id="loveMessage"></p>
+        </section>
+        
+        <section class="gallery">
+            <h2>Our Memories</h2>
+            <div class="images">
+                <img src="nature1.jpg" alt="Nature Image 1">
+                <img src="abstract1.jpg" alt="Abstract Image 1">
+                <img src="landscape1.jpg" alt="Landscape Image 1">
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>Made with love</p>
+    </footer>
+    
     <script src="script.js"></script>
 </body>
 </html>
