@@ -1,95 +1,60 @@
-/* Basic reset */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 
-/* Background styling */
+/* Full-Screen Background */
 body {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url('path/to/floral-background.jpg');
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4);
     color: #333;
-    text-align: center;
 }
 
-/* Main container styling */
-.container {
-    width: 80%;
-    max-width: 800px;
+/* Main Content Area */
+.content {
+    text-align: center;
+    max-width: 600px;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Header Style */
 h1 {
     font-size: 2.5em;
     color: #e74c3c;
     margin-bottom: 20px;
 }
 
-.photo img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    margin-top: 10px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-p {
-    font-size: 1.2em;
-    margin: 20px 0;
-}
-
-/* Countdown timer styling at the bottom */
+/* Countdown Styling */
 .countdown {
-    margin-top: 20px;
-    padding: 20px;
-    background: #f9e1e1;
-    border-radius: 50%;
-    width: 250px;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.countdown h2 {
-    color: #e74c3c;
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-#timer {
+    margin: 20px 0;
     font-size: 1.2em;
-    color: #333;
-}
-
-/* Love letter typing effect styling */
-.love-letter {
-    margin-top: 20px;
-    font-size: 1.2em;
-    line-height: 1.6;
     color: #555;
 }
 
-.love-letter h2 {
-    font-size: 1.8em;
+#timer {
+    font-size: 1.5em;
     color: #e74c3c;
-    margin-bottom: 15px;
+}
+
+/* Love Letter Typing Effect */
+.love-letter {
+    font-size: 1.3em;
+    line-height: 1.6;
+    color: #555;
+    margin-top: 30px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
