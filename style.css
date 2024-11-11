@@ -49,17 +49,10 @@ h1 {
     font-family: 'Georgia', serif; /* Elegant serif font */
 }
 
-.soundcloud-embed {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 600px;
-    z-index: 1000; /* Keeps the player above other content */
-}
-
-iframe {
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+/* Hide SoundCloud player */
+.hidden-soundcloud {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    display: none;
 }
