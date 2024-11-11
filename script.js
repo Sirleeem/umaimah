@@ -3,7 +3,7 @@ const countdownDate = new Date("Jul 7, 2024 00:00:00").getTime();
 
 function updateCountdown() {
     const now = new Date().getTime();
-    const distance = now - countdownDate;
+    const distance = countdownDate - now;
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -50,3 +50,16 @@ function typeMessage() {
 }
 
 typeMessage();
+
+// Hearts Sparkling Animation
+const hearts = document.querySelectorAll('.heart');
+
+// Trigger hearts to start floating and sparkling after the typing effect
+window.onload = function() {
+    setTimeout(() => {
+        hearts.forEach(heart => {
+            heart.style.opacity = 1; // Hearts fade in
+            heart.style.animationPlayState = 'running'; // Start hearts floating
+        });
+    }, 1000); // Delay to sync with typewriter effect
+};
