@@ -14,6 +14,8 @@ body {
     align-items: center;
     flex-direction: column;
     min-height: 100vh;
+    position: relative;
+    overflow: hidden; /* Prevents hearts from overflowing out of view */
 }
 
 header {
@@ -62,21 +64,71 @@ h1 {
     font-family: 'Georgia', serif; /* Elegant serif font */
 }
 
-.gallery {
-    margin: 30px;
-}
-
-.images img {
-    width: 120px;
-    height: 120px;
-    margin: 10px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    border: 3px solid #ff8b94; /* Soft border for images */
-}
-
 footer {
     margin-top: 20px;
     color: #888;
     font-family: 'Dancing Script', cursive; /* Romantic footer font */
+}
+
+/* Hearts Sparkle Animation */
+.heart {
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    animation: sparkle 3s ease-in-out infinite;
+    font-size: 24px;
+    color: #ff69b4;
+    pointer-events: none;
+}
+
+@keyframes sparkle {
+    0% {
+        transform: scale(0.8) translateY(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2) translateY(-30px);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.8) translateY(0);
+        opacity: 0;
+    }
+}
+
+/* Random Heart Floating */
+@keyframes float {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    100% {
+        transform: translateX(random(500px)) translateY(random(-300px));
+    }
+}
+
+/* Add more hearts that will appear randomly */
+.heart1 {
+    animation: sparkle 3s ease-in-out infinite, float 6s ease-in-out infinite;
+    animation-delay: 0s;
+    left: 10%;
+}
+.heart2 {
+    animation: sparkle 3s ease-in-out infinite, float 6s ease-in-out infinite;
+    animation-delay: 1s;
+    left: 25%;
+}
+.heart3 {
+    animation: sparkle 3s ease-in-out infinite, float 6s ease-in-out infinite;
+    animation-delay: 2s;
+    left: 40%;
+}
+.heart4 {
+    animation: sparkle 3s ease-in-out infinite, float 6s ease-in-out infinite;
+    animation-delay: 3s;
+    left: 60%;
+}
+.heart5 {
+    animation: sparkle 3s ease-in-out infinite, float 6s ease-in-out infinite;
+    animation-delay: 4s;
+    left: 80%;
 }
