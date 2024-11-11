@@ -8,18 +8,7 @@
 body {
     font-family: 'Dancing Script', cursive, 'Arial', sans-serif; /* Romantic font */
     color: #3e1c41; /* Deep purple color */
-    background-color: #fce4ec; /* Soft pink background */
-    background-image: 
-        url('https://media3.giphy.com/media/Y3HTF8WdRpEFIu3FA8/giphy.gif?cid=6c09b9525onn37zgcfqi1e4qj4v1lzjieolsyoj9ovc8on0m&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s'), /* First Love GIF */
-        url('https://media.giphy.com/media/3o6Zt5lIjl7mnTyVbK/giphy.gif'), /* Second Love GIF */
-        url('https://media.giphy.com/media/6nJmKXnZNEHg6/giphy.gif'), /* Third Love GIF */
-        url('https://media.giphy.com/media/1o9wTnfyHlCzq3JMLh/giphy.gif'); /* Fourth Love GIF */
-    
-    /* Define positioning for each GIF */
-    background-position: top left, top right, bottom left, bottom right;
-    background-size: 150px, 150px, 150px, 150px; /* Adjust size of GIFs */
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat; /* Prevent repeating */
-    
+    background: linear-gradient(to right, #fce4ec, #ff8b94); /* Soft pink gradient background */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,7 +17,7 @@ body {
 }
 
 header {
-    background-color: rgba(255, 139, 148, 0.9); /* Semi-transparent pink to see the background */
+    background-color: rgba(255, 139, 148, 0.9); /* Semi-transparent pink */
     color: #fff;
     padding: 20px;
     text-align: center;
