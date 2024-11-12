@@ -13,9 +13,9 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: auto;
     position: relative;
-    overflow: hidden; /* Prevents hearts from overflowing out of view */
+    overflow-y: auto; /* Prevents hearts from overflowing out of view */
 }
 
 header {
