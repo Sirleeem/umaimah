@@ -46,6 +46,8 @@ function typeMessage() {
             lineIndex++;
             setTimeout(typeMessage, speed * 10);  // Pause before starting next line
         }
+        // Smoothly scroll to the bottom as text is typed
+        messageElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
 }
 
