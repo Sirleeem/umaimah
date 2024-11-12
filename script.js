@@ -36,7 +36,7 @@ const messageLines = [
     "You make every day brighter, and I am endlessly grateful to have you by my side.",
     "I love you more than words can express and am so excited for every new day we get to share together. ❤️",
     "With all my love,",
-    "-Your Niac"
+    "-Your Niac❤️"
 ];
 
 let lineIndex = 0;
