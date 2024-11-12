@@ -1,4 +1,4 @@
-// Select the audio element
+ //Select the audio element
 const backgroundMusic = document.getElementById("backgroundMusic");
 
 // Select the music and chat buttons
@@ -153,54 +153,3 @@ sendButton.addEventListener("click", async () => {
         console.error("Error adding document: ", e);
     }
 });
-
-// Firebase setup for Firestore
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getFirestore, collection, addDoc, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-
-// Your Firebase config (replace with your actual Firebase project credentials)
-const firebaseConfig = {
-    apiKey: "AIzaSyDD5y3BorS3jHwJURqv-z0HsL3NLheNuvg",
-    authDomain: "chat-4116a.firebaseapp.com",
-    projectId: "chat-4116a",
-    storageBucket: "chat-4116a.firebasestorage.app",
-    messagingSenderId: "935196603199",
-    appId: "1:935196603199:web:3598c7f62151dca8dd598a",
-    measurementId: "G-NKWS35490E"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const firestore = getFirestore(app);  // Initialize Firestore
-
-// Add message to Firestore
-async function addMessageToFirestore(messageText) {
-    const username = localStorage.getItem("username");
-    try {
-        const docRef = await addDoc(collection(firestore, "messages"), {
-            username: username,
-            message: messageText,
-            timestamp: new Date()
-        });
-        console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-        console.error("Error adding document: ", e);
-    }
-}
-
-// Fetch messages from Firestore and display them
-function fetchMessagesFromFirestore() {
-    const messagesQuery = query(collection(firestore, "messages"), orderBy("timestamp"));
-    onSnapshot(messagesQuery, (querySnapshot) => {
-        messagesList.innerHTML = ""; // Clear the messages before re-rendering
-        querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            const li = document.createElement("li");
-            li.textContent = `${data.username}: ${data.message}`;
-            messagesList.appendChild(li);
-        });
-    });
-}
-
-// Call the function to fetch messages
-fetchMessagesFromFirestore();
