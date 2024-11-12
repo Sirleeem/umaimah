@@ -26,27 +26,23 @@
             </div>
         </section>
         
-        <!-- Background Music -->
         <audio id="backgroundMusic" loop>
             <source src="https://www.dropbox.com/scl/fi/clpb7bhf79amehc7r4opv/Sound.mp3?rlkey=0mjk9poxkn7qgkg9wapf0ykpc&st=0putuz50&raw=1" type="audio/mp3">
         </audio>
+
     </main>
     
-    <!-- Hearts for animation -->
     <div class="heart heart1">❤️</div>
     <div class="heart heart2">❤️</div>
     <div class="heart heart3">❤️</div>
     <div class="heart heart4">❤️</div>
     <div class="heart heart5">❤️</div>
 
-    <!-- Firebase SDK -->
     <script type="module">
-        // Import the necessary Firebase SDKs
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
-        import { getFirestore, collection, addDoc, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
-        // Your Firebase config (replace with your actual Firebase project credentials)
         const firebaseConfig = {
             apiKey: "AIzaSyDD5y3BorS3jHwJURqv-z0HsL3NLheNuvg",
             authDomain: "chat-4116a.firebaseapp.com",
@@ -57,30 +53,24 @@
             measurementId: "G-NKWS35490E"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const db = getFirestore(app);  // Initialize Firestore
+        getAnalytics(app);
+        window.db = getFirestore(app);
     </script>
 
-    <!-- Music Button -->
     <div id="musicButton" style="position: fixed; top: 20px; right: 20px; cursor: pointer; font-size: 2rem;">
         ▶️
     </div>
 
-    <!-- Chat Button -->
     <div id="chatButton" style="position: fixed; bottom: 20px; right: 20px; background-color: #ff66b2; color: white; padding: 10px 20px; border-radius: 50px; cursor: pointer; font-size: 16px;">Chat</div>
 
-    <!-- Chat Container (Initially Hidden) -->
     <div id="chatContainer" style="position: fixed; bottom: 70px; right: 20px; width: 300px; height: 400px; background-color: white; border: 1px solid #ccc; border-radius: 10px; display: none; flex-direction: column; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-        <!-- Login Form -->
         <div id="loginForm" style="display: flex; flex-direction: column; padding: 10px; align-items: center;">
             <h3>Login</h3>
             <input type="text" id="usernameInput" placeholder="Enter your username" style="margin: 10px; padding: 10px; width: 80%;" />
             <button id="loginButton" style="background-color: #ff66b2; color: white; padding: 10px; width: 80%; cursor: pointer;">Login</button>
         </div>
 
-        <!-- Chat Interface (Hidden initially) -->
         <div id="chatInterface" style="display: none; flex-direction: column;">
             <ul id="messagesList" style="list-style: none; padding: 10px; margin: 0; height: 300px; overflow-y: scroll;"></ul>
             <textarea id="messageInput" placeholder="Type a message..." style="width: 100%; padding: 10px; box-sizing: border-box;"></textarea>
@@ -88,7 +78,6 @@
         </div>
     </div>
 
-    <!-- Link to your external script.js -->
     <script src="script.js"></script>
     
     <footer>
