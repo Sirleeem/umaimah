@@ -57,7 +57,7 @@ typeMessage();
 const backgroundMusic = document.getElementById("backgroundMusic");
 
 // Start playing music when the page loads
-function startMusic() {
+window.onload = function() {
     backgroundMusic.play().catch(error => {
         console.log("Autoplay blocked, waiting for user interaction to play audio.");
         // If autoplay is blocked, add an event listener to start music on user interaction
@@ -67,11 +67,6 @@ function startMusic() {
             });
         }, { once: true });
     });
-}
-
-// Call the music start function immediately
-window.onload = function() {
-    startMusic();
 };
 
 // UI Elements
@@ -95,8 +90,11 @@ const allowedUsernames = ["Insom", "Niac"]; // Allowed usernames
 const db = firebase.firestore();
 
 // Toggle the chat interface visibility when the chat button is clicked
-chatButton.addEventListener("click", () => {
-    // Open the chat interface and login form without affecting the music autoplay
+chatButton.addEventListener("click", (event) => {
+    // Stop the event from propagating to the background music click handler
+    event.stopPropagation();
+
+    // Show the chat interface and hide login form
     chatContainer.style.display = "flex";
     loginForm.style.display = "block";
     chatInterface.style.display = "none";
