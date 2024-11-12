@@ -1,39 +1,26 @@
- //Select the audio element
 const backgroundMusic = document.getElementById("backgroundMusic");
-
-// Select the music and chat buttons
 const musicButton = document.getElementById("musicButton");
 const chatButton = document.getElementById("chatButton");
 const chatContainer = document.getElementById("chatContainer");
 
-// Music Play Trigger
 musicButton.addEventListener("click", () => {
-    // Play background music when the play button is clicked
     backgroundMusic.play().catch(error => {
-        console.log("Autoplay blocked, waiting for user interaction to play audio.");
         document.addEventListener("click", () => {
-            backgroundMusic.play().catch(e => {
-                console.log("Failed to play audio on click:", e);
-            });
+            backgroundMusic.play().catch(e => console.log("Failed to play audio:", e));
         }, { once: true });
     });
-
-    // Hide the music button after music starts
-    musicButton.style.display = "none";  // Hide the play button after music starts
+    musicButton.style.display = "none";
 });
 
-// Countdown Timer Script
 const countdownDate = new Date("Jul 7, 2024 00:00:00").getTime();
 
 function updateCountdown() {
     const now = new Date().getTime();
     const distance = countdownDate - now;
-
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
     document.getElementById("days").innerText = days;
     document.getElementById("hours").innerText = hours;
     document.getElementById("minutes").innerText = minutes;
@@ -42,7 +29,6 @@ function updateCountdown() {
 
 setInterval(updateCountdown, 1000);
 
-// Typing Effect for Love Message
 const messageLines = [
     "Dear Insom,",
     "Every moment with you is like a dream come true.",
@@ -55,7 +41,7 @@ const messageLines = [
 
 let lineIndex = 0;
 let charIndex = 0;
-const speed = 50;  // Typing speed in milliseconds
+const speed = 50;
 const messageElement = document.getElementById("loveMessage");
 
 function typeMessage() {
@@ -68,16 +54,14 @@ function typeMessage() {
             messageElement.innerHTML += "<br><br>";
             charIndex = 0;
             lineIndex++;
-            setTimeout(typeMessage, speed * 10);  // Pause before starting next line
+            setTimeout(typeMessage, speed * 10);
         }
-        // Smoothly scroll to the bottom as text is typed
         messageElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
 }
 
 typeMessage();
 
-// UI Elements for chat
 const loginForm = document.getElementById("loginForm");
 const usernameInput = document.getElementById("usernameInput");
 const loginButton = document.getElementById("loginButton");
@@ -86,70 +70,44 @@ const messagesList = document.getElementById("messagesList");
 const messageInput = document.getElementById("messageInput");
 const sendButton = document.getElementById("sendButton");
 const errorMessage = document.createElement("div");
-errorMessage.style.color = "red"; // Style for error message
-loginForm.appendChild(errorMessage); // Append it to the login form
+errorMessage.style.color = "red";
+loginForm.appendChild(errorMessage);
 
 let currentUser = null;
-const allowedUsernames = ["Insom", "Niac"]; // Allowed usernames
+const allowedUsernames = ["Insom", "Niac"];
 
-// Firebase Firestore Reference
-const db = firebase.firestore();
-
-// Toggle the chat interface visibility when the chat button is clicked
 chatButton.addEventListener("click", (event) => {
-    // Stop the event from propagating to the background music click handler
     event.stopPropagation();
-
-    // Show the chat interface and hide login form
     chatContainer.style.display = "flex";
     loginForm.style.display = "block";
     chatInterface.style.display = "none";
 });
 
-// Handle user login with username
 loginButton.addEventListener("click", () => {
     const username = usernameInput.value.trim();
-    
     if (!allowedUsernames.includes(username)) {
-        errorMessage.textContent = "Invalid username. Only 'Insom' or 'Niac' can log in.";
-        return;
+        errorMessage.textContent = "Invalid username. Only 'Insom' and 'Niac' are allowed.";
+    } else {
+        errorMessage.textContent = "";
+        currentUser = username;
+        loginForm.style.display = "none";
+        chatInterface.style.display = "flex";
     }
-
-    currentUser = username;
-    loginForm.style.display = "none";
-    chatInterface.style.display = "block";
-    usernameInput.value = "";
-
-    // Clear the error message if username is valid
-    errorMessage.textContent = "";
-
-    // Start displaying messages in real-time from Firestore
-    const messagesRef = db.collection("messages");
-    messagesRef.orderBy("timestamp").onSnapshot((snapshot) => {
-        messagesList.innerHTML = "";  // Clear previous messages
-        snapshot.forEach(doc => {
-            const message = doc.data();
-            const li = document.createElement("li");
-            li.textContent = `${message.username}: ${message.text}`;
-            messagesList.appendChild(li);
-        });
-    });
 });
 
-// Send message to Firestore
-sendButton.addEventListener("click", async () => {
-    const messageText = messageInput.value.trim();
-    if (messageText === "") return;
+sendButton.addEventListener("click", () => {
+    const message = messageInput.value.trim();
+    if (message) {
+        const messageItem = document.createElement("li");
+        messageItem.innerHTML = `<strong>${currentUser}:</strong> ${message}`;
+        messagesList.appendChild(messageItem);
+        messageInput.value = "";
+        messagesList.scrollTop = messagesList.scrollHeight;
+    }
+});
 
-    try {
-        await db.collection("messages").add({
-            username: currentUser,
-            text: messageText,
-            timestamp: new Date()
-        });
-
-        messageInput.value = ""; // Clear message input after sending
-    } catch (e) {
-        console.error("Error adding document: ", e);
+document.addEventListener("click", (event) => {
+    if (!chatContainer.contains(event.target) && event.target !== chatButton) {
+        chatContainer.style.display = "none";
     }
 });
