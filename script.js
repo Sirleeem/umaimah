@@ -1,21 +1,3 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyDD5y3BorS3jHwJURqv-z0HsL3NLheNuvg",
-    authDomain: "chat-4116a.firebaseapp.com",
-    projectId: "chat-4116a",
-    storageBucket: "chat-4116a.firebasestorage.app",
-    messagingSenderId: "935196603199",
-    appId: "1:935196603199:web:3598c7f62151dca8dd598a",
-    measurementId: "G-NKWS35490E"
-};
-
-const app = initializeApp(firebaseConfig);
-getAnalytics(app);
-const db = getFirestore(app);
-
 const backgroundMusic = document.getElementById("backgroundMusic");
 const musicButton = document.getElementById("musicButton");
 const chatButton = document.getElementById("chatButton");
@@ -104,41 +86,25 @@ chatButton.addEventListener("click", (event) => {
 loginButton.addEventListener("click", () => {
     const username = usernameInput.value.trim();
     if (!allowedUsernames.includes(username)) {
-        errorMessage.textContent = "Invalid username.";
+        errorMessage.textContent = "Invalid username. Only 'Insom' and 'Niac' are allowed.";
     } else {
         errorMessage.textContent = "";
         currentUser = username;
         loginForm.style.display = "none";
         chatInterface.style.display = "flex";
-        loadMessages();
     }
 });
 
-sendButton.addEventListener("click", async () => {
+sendButton.addEventListener("click", () => {
     const message = messageInput.value.trim();
     if (message) {
-        await addDoc(collection(db, "messages"), {
-            username: currentUser,
-            text: message,
-            timestamp: new Date()
-        });
+        const messageItem = document.createElement("li");
+        messageItem.innerHTML = `<strong>${currentUser}:</strong> ${message}`;
+        messagesList.appendChild(messageItem);
         messageInput.value = "";
+        messagesList.scrollTop = messagesList.scrollHeight;
     }
 });
-
-function loadMessages() {
-    const messagesQuery = query(collection(db, "messages"), orderBy("timestamp", "asc"));
-    onSnapshot(messagesQuery, (snapshot) => {
-        messagesList.innerHTML = "";
-        snapshot.forEach((doc) => {
-            const messageData = doc.data();
-            const messageItem = document.createElement("li");
-            messageItem.innerHTML = `<strong>${messageData.username}:</strong> ${messageData.text}`;
-            messagesList.appendChild(messageItem);
-        });
-        messagesList.scrollTop = messagesList.scrollHeight;
-    });
-}
 
 document.addEventListener("click", (event) => {
     if (!chatContainer.contains(event.target) && event.target !== chatButton) {
