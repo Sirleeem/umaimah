@@ -147,14 +147,9 @@ footer {
     background-color: #ff66b2;
 }
 
-#chatButton {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-}
 
 #musicButton {
     position: fixed;
-    top: 20px;
+    bottom: 20px;
     right: 20px;
 }
