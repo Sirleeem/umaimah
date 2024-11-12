@@ -7,15 +7,15 @@
 
 body {
     font-family: 'Dancing Script', cursive, 'Arial', sans-serif; /* Romantic font */
-    color: #3e1c41; /* Deep purpl color */
+    color: #3e1c41; /* Deep purple color */
     background: linear-gradient(to right, #fce4ec, #ff8b94); /* Soft pink gradient background */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    min-height: auto;
+    min-height: auto; /* Change from 100vh to auto */
     position: relative;
-    overflow-y: auto; /* Prevents hearts from overflowing out of view */
+    overflow-y: auto; /* Allows vertical scrolling */
 }
 
 header {
@@ -30,7 +30,7 @@ header {
 h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
-    font-family: 'Pacifico', cursive; /* A more romantic header font */
+    font-family: 'Pacifico', cursive, 'Comic Sans MS', sans-serif; /* Fallback font */
 }
 
 .counter-section {
@@ -45,14 +45,15 @@ h1 {
 }
 
 #countdown div {
-    background: rgba(255, 139, 148, 0.8); /* Semi-transparent pink */
+    background: rgba(255, 139, 148, 0.9); /* Semi-transparent pink */
     color: #fff;
     padding: 20px;
     border-radius: 12px;
     width: 100px;
     font-size: 1.5rem;
-    font-family: 'Lobster', cursive; /* Romantic font for numbers */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Lobster', cursive;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #f8bbd0; /* Slight border for better readability */
 }
 
 .message-section {
@@ -62,6 +63,10 @@ h1 {
     color: #3e1c41; /* Deep purple text */
     line-height: 1.8;
     font-family: 'Georgia', serif; /* Elegant serif font */
+}
+
+#loveMessage {
+    aria-live: polite; /* Improves accessibility for screen readers */
 }
 
 footer {
@@ -75,10 +80,11 @@ footer {
     position: absolute;
     bottom: 0;
     opacity: 0;
-    animation: sparkle 3s ease-in-out infinite;
+    animation: sparkle 3s ease-in-out infinite, float 6s ease-in-out infinite;
     font-size: 24px;
     color: #ff69b4;
     pointer-events: none;
+    will-change: transform, opacity; /* Improves animation performance */
 }
 
 @keyframes sparkle {
@@ -99,10 +105,16 @@ footer {
 /* Random Heart Floating */
 @keyframes float {
     0% {
-        transform: translateX(0) translateY(0);
+        transform: translateX(0) translateY(0) scale(1) rotate(0deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateX(20px) translateY(-30px) scale(1.1) rotate(15deg);
+        opacity: 1;
     }
     100% {
-        transform: translateX(random(500px)) translateY(random(-300px));
+        transform: translateX(-20px) translateY(-60px) scale(1) rotate(-15deg);
+        opacity: 0.8;
     }
 }
 
@@ -113,22 +125,18 @@ footer {
     left: 10%;
 }
 .heart2 {
-    animation: sparkle 3s ease-in-out infinite, float 6s ease-in-out infinite;
     animation-delay: 1s;
     left: 25%;
 }
 .heart3 {
-    animation: sparkle 3s ease-in-out infinite, float 6s ease-in-out infinite;
     animation-delay: 2s;
     left: 40%;
 }
 .heart4 {
-    animation: sparkle 3s ease-in-out infinite, float 6s ease-in-out infinite;
     animation-delay: 3s;
     left: 60%;
 }
 .heart5 {
-    animation: sparkle 3s ease-in-out infinite, float 6s ease-in-out infinite;
     animation-delay: 4s;
     left: 80%;
 }
