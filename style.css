@@ -13,13 +13,13 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    min-height: auto; /* Change from 100vh to auto */
+    min-height: auto;
     position: relative;
-    overflow-y: auto; /* Allows vertical scrolling */
+    overflow-y: auto;
 }
 
 header {
-    background-color: rgba(255, 139, 148, 0.9); /* Semi-transparent pink */
+    background-color: rgba(255, 139, 148, 0.9);
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -30,7 +30,7 @@ header {
 h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
-    font-family: 'Pacifico', cursive, 'Comic Sans MS', sans-serif; /* Fallback font */
+    font-family: 'Pacifico', cursive, 'Comic Sans MS', sans-serif;
 }
 
 .counter-section {
@@ -45,34 +45,34 @@ h1 {
 }
 
 #countdown div {
-    background: rgba(255, 139, 148, 0.9); /* Semi-transparent pink */
+    background: rgba(255, 139, 148, 0.9);
     color: #fff;
-    padding: 15px; /* Decreased padding */
+    padding: 15px;
     border-radius: 12px;
-    width: 80px; /* Reduced width */
-    font-size: 1.2rem; /* Decreased font size */
+    width: 80px;
+    font-size: 1.2rem;
     font-family: 'Lobster', cursive;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border: 2px solid #f8bbd0; /* Slight border for better readability */
+    border: 2px solid #f8bbd0;
 }
 
 .message-section {
     margin: 30px;
     text-align: center;
     font-size: 1.2rem;
-    color: #3e1c41; /* Deep purple text */
+    color: #3e1c41;
     line-height: 1.8;
-    font-family: 'Georgia', serif; /* Elegant serif font */
+    font-family: 'Georgia', serif;
 }
 
 #loveMessage {
-    aria-live: polite; /* Improves accessibility for screen readers */
+    aria-live: polite;
 }
 
 footer {
     margin-top: 20px;
     color: #888;
-    font-family: 'Dancing Script', cursive; /* Romantic footer font */
+    font-family: 'Dancing Script', cursive;
 }
 
 /* Hearts Sparkle Animation */
@@ -84,7 +84,7 @@ footer {
     font-size: 24px;
     color: #ff69b4;
     pointer-events: none;
-    will-change: transform, opacity; /* Improves animation performance */
+    will-change: transform, opacity;
 }
 
 @keyframes sparkle {
@@ -102,7 +102,6 @@ footer {
     }
 }
 
-/* Random Heart Floating */
 @keyframes float {
     0% {
         transform: translateX(0) translateY(0) scale(1) rotate(0deg);
@@ -118,9 +117,7 @@ footer {
     }
 }
 
-/* Add more hearts that will appear randomly */
 .heart1 {
-    animation: sparkle 3s ease-in-out infinite, float 6s ease-in-out infinite;
     animation-delay: 0s;
     left: 10%;
 }
@@ -141,14 +138,13 @@ footer {
     left: 80%;
 }
 
-/* Chat and Music Buttons */
 #chatButton, #musicButton {
     cursor: pointer;
     font-size: 2rem;
     color: white;
     padding: 10px;
     border-radius: 50%;
-    background-color: #ff66b2; /* Matching the background color */
+    background-color: #ff66b2;
 }
 
 #chatButton {
