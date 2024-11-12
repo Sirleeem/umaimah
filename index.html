@@ -39,9 +39,6 @@
     <div class="heart heart4">❤️</div>
     <div class="heart heart5">❤️</div>
 
-    <!-- Floating Play Button for Music -->
-    <div id="musicButton" style="position: fixed; bottom: 100px; left: 20px; background-color: #007bff; color: white; padding: 10px 20px; border-radius: 50px; cursor: pointer; font-size: 24px;">▶️</div>
-
     <!-- Firebase SDK -->
     <script type="module">
         // Import the necessary Firebase SDKs
@@ -66,8 +63,13 @@
         const db = getFirestore(app);  // Initialize Firestore
     </script>
 
-    <!-- Floating Chat Button -->
-    <div id="chatButton" style="position: fixed; bottom: 20px; right: 20px; background-color: #007bff; color: white; padding: 10px 20px; border-radius: 50px; cursor: pointer; font-size: 16px;">Chat</div>
+    <!-- Music Button -->
+    <div id="musicButton" style="position: fixed; top: 20px; right: 20px; cursor: pointer; font-size: 2rem;">
+        ▶️
+    </div>
+
+    <!-- Chat Button -->
+    <div id="chatButton" style="position: fixed; bottom: 20px; right: 20px; background-color: #ff66b2; color: white; padding: 10px 20px; border-radius: 50px; cursor: pointer; font-size: 16px;">Chat</div>
 
     <!-- Chat Container (Initially Hidden) -->
     <div id="chatContainer" style="position: fixed; bottom: 70px; right: 20px; width: 300px; height: 400px; background-color: white; border: 1px solid #ccc; border-radius: 10px; display: none; flex-direction: column; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
@@ -75,14 +77,14 @@
         <div id="loginForm" style="display: flex; flex-direction: column; padding: 10px; align-items: center;">
             <h3>Login</h3>
             <input type="text" id="usernameInput" placeholder="Enter your username" style="margin: 10px; padding: 10px; width: 80%;" />
-            <button id="loginButton" style="background-color: #007bff; color: white; padding: 10px; width: 80%; cursor: pointer;">Login</button>
+            <button id="loginButton" style="background-color: #ff66b2; color: white; padding: 10px; width: 80%; cursor: pointer;">Login</button>
         </div>
 
         <!-- Chat Interface (Hidden initially) -->
         <div id="chatInterface" style="display: none; flex-direction: column;">
             <ul id="messagesList" style="list-style: none; padding: 10px; margin: 0; height: 300px; overflow-y: scroll;"></ul>
             <textarea id="messageInput" placeholder="Type a message..." style="width: 100%; padding: 10px; box-sizing: border-box;"></textarea>
-            <button id="sendButton" style="background-color: #007bff; color: white; border: none; padding: 10px; width: 100%; cursor: pointer;">Send</button>
+            <button id="sendButton" style="background-color: #ff66b2; color: white; border: none; padding: 10px; width: 100%; cursor: pointer;">Send</button>
         </div>
     </div>
 
@@ -90,7 +92,7 @@
     <script src="script.js"></script>
     
     <footer>
-        <p>Made with love❤️</p>
+        <p>Made with love❤️ for Umaimah</p>
     </footer>
 </body>
 </html>
