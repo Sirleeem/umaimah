@@ -57,7 +57,7 @@ typeMessage();
 const backgroundMusic = document.getElementById("backgroundMusic");
 
 // Start playing music when the page loads
-window.onload = function() {
+function startMusic() {
     backgroundMusic.play().catch(error => {
         console.log("Autoplay blocked, waiting for user interaction to play audio.");
         // If autoplay is blocked, add an event listener to start music on user interaction
@@ -67,7 +67,13 @@ window.onload = function() {
             });
         }, { once: true });
     });
+}
+
+// Call the music start function immediately
+window.onload = function() {
+    startMusic();
 };
+
 // UI Elements
 const chatButton = document.getElementById("chatButton");
 const chatContainer = document.getElementById("chatContainer");
@@ -90,6 +96,7 @@ const db = firebase.firestore();
 
 // Toggle the chat interface visibility when the chat button is clicked
 chatButton.addEventListener("click", () => {
+    // Open the chat interface and login form without affecting the music autoplay
     chatContainer.style.display = "flex";
     loginForm.style.display = "block";
     chatInterface.style.display = "none";
@@ -142,6 +149,7 @@ sendButton.addEventListener("click", async () => {
         console.error("Error adding document: ", e);
     }
 });
+
 // Hearts Sparkling Animation
 const hearts = document.querySelectorAll('.heart');
 
