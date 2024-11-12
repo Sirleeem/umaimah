@@ -1,3 +1,27 @@
+// Select the audio element
+const backgroundMusic = document.getElementById("backgroundMusic");
+
+// Select the music and chat buttons
+const musicButton = document.getElementById("musicButton");
+const chatButton = document.getElementById("chatButton");
+const chatContainer = document.getElementById("chatContainer");
+
+// Music Play Trigger
+musicButton.addEventListener("click", () => {
+    // Play background music when the play button is clicked
+    backgroundMusic.play().catch(error => {
+        console.log("Autoplay blocked, waiting for user interaction to play audio.");
+        document.addEventListener("click", () => {
+            backgroundMusic.play().catch(e => {
+                console.log("Failed to play audio on click:", e);
+            });
+        }, { once: true });
+    });
+
+    // Hide the music button after music starts
+    musicButton.style.display = "none";  // Hide the play button after music starts
+});
+
 // Countdown Timer Script
 const countdownDate = new Date("Jul 7, 2024 00:00:00").getTime();
 
@@ -53,35 +77,7 @@ function typeMessage() {
 
 typeMessage();
 
-// Select the audio element
-const backgroundMusic = document.getElementById("backgroundMusic");
-
-// Start playing music when the page loads
-window.onload = function() {
-    // Play background music only if it's not blocked by the browser
-    backgroundMusic.play().catch(error => {
-        console.log("Autoplay blocked, waiting for user interaction to play audio.");
-        // If autoplay is blocked, add an event listener to start music on user interaction
-        document.addEventListener("click", () => {
-            backgroundMusic.play().catch(e => {
-                console.log("Failed to play audio on click:", e);
-            });
-        }, { once: true });
-    });
-
-    // Hearts floating and sparkling animation
-    setTimeout(() => {
-        const hearts = document.querySelectorAll('.heart');
-        hearts.forEach(heart => {
-            heart.style.opacity = 1; // Hearts fade in
-            heart.style.animationPlayState = 'running'; // Start hearts floating
-        });
-    }, 1000); // Delay to sync with typewriter effect
-};
-
 // UI Elements for chat
-const chatButton = document.getElementById("chatButton");
-const chatContainer = document.getElementById("chatContainer");
 const loginForm = document.getElementById("loginForm");
 const usernameInput = document.getElementById("usernameInput");
 const loginButton = document.getElementById("loginButton");
@@ -108,7 +104,6 @@ chatButton.addEventListener("click", (event) => {
     chatContainer.style.display = "flex";
     loginForm.style.display = "block";
     chatInterface.style.display = "none";
-    chatButton.style.display = "none";  // Hide the chat button once the interface is open
 });
 
 // Handle user login with username
