@@ -53,6 +53,19 @@ function typeMessage() {
 
 typeMessage();
 
+// Select the audio element
+const backgroundMusic = document.getElementById("backgroundMusic");
+
+// Start playing music when the page loads
+window.onload = function() {
+    backgroundMusic.play().catch(error => {
+        // Handle autoplay restriction: if blocked, add click event listener to start music on user interaction
+        document.addEventListener("click", () => {
+            backgroundMusic.play();
+        }, { once: true }); // Only needs to be clicked once to start
+    });
+};
+
 // Hearts Sparkling Animation
 const hearts = document.querySelectorAll('.heart');
 
