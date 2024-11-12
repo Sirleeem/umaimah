@@ -68,7 +68,80 @@ window.onload = function() {
         }, { once: true });
     });
 };
+// UI Elements
+const chatButton = document.getElementById("chatButton");
+const chatContainer = document.getElementById("chatContainer");
+const loginForm = document.getElementById("loginForm");
+const usernameInput = document.getElementById("usernameInput");
+const loginButton = document.getElementById("loginButton");
+const chatInterface = document.getElementById("chatInterface");
+const messagesList = document.getElementById("messagesList");
+const messageInput = document.getElementById("messageInput");
+const sendButton = document.getElementById("sendButton");
+const errorMessage = document.createElement("div");
+errorMessage.style.color = "red"; // Style for error message
+loginForm.appendChild(errorMessage); // Append it to the login form
 
+let currentUser = null;
+const allowedUsernames = ["Insom", "Niac"]; // Allowed usernames
+
+// Firebase Firestore Reference
+const db = firebase.firestore();
+
+// Toggle the chat interface visibility when the chat button is clicked
+chatButton.addEventListener("click", () => {
+    chatContainer.style.display = "flex";
+    loginForm.style.display = "block";
+    chatInterface.style.display = "none";
+});
+
+// Handle user login with username
+loginButton.addEventListener("click", () => {
+    const username = usernameInput.value.trim();
+    
+    if (!allowedUsernames.includes(username)) {
+        errorMessage.textContent = "Invalid username. Only 'Insom' or 'Niac' can log in.";
+        return;
+    }
+
+    currentUser = username;
+    loginForm.style.display = "none";
+    chatInterface.style.display = "block";
+    usernameInput.value = "";
+
+    // Clear the error message if username is valid
+    errorMessage.textContent = "";
+
+    // Start displaying messages in real-time from Firestore
+    const messagesRef = db.collection("messages");
+    messagesRef.orderBy("timestamp").onSnapshot((snapshot) => {
+        messagesList.innerHTML = "";  // Clear previous messages
+        snapshot.forEach(doc => {
+            const message = doc.data();
+            const li = document.createElement("li");
+            li.textContent = `${message.username}: ${message.text}`;
+            messagesList.appendChild(li);
+        });
+    });
+});
+
+// Send message to Firestore
+sendButton.addEventListener("click", async () => {
+    const messageText = messageInput.value.trim();
+    if (messageText === "") return;
+
+    try {
+        await db.collection("messages").add({
+            username: currentUser,
+            text: messageText,
+            timestamp: new Date()
+        });
+
+        messageInput.value = ""; // Clear message input after sending
+    } catch (e) {
+        console.error("Error adding document: ", e);
+    }
+});
 // Hearts Sparkling Animation
 const hearts = document.querySelectorAll('.heart');
 
