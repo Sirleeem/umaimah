@@ -25,10 +25,11 @@
                 <div><span id="seconds">0</span><p>Seconds</p></div>
             </div>
         </section>
+        
         <!-- Background Music -->
-<audio id="backgroundMusic" loop>
-    <source src="https://www.dropbox.com/scl/fi/clpb7bhf79amehc7r4opv/Sound.mp3?rlkey=0mjk9poxkn7qgkg9wapf0ykpc&st=0putuz50&raw=1" type="audio/mp3">
-</audio>
+        <audio id="backgroundMusic" loop>
+            <source src="https://www.dropbox.com/scl/fi/clpb7bhf79amehc7r4opv/Sound.mp3?rlkey=0mjk9poxkn7qgkg9wapf0ykpc&st=0putuz50&raw=1" type="audio/mp3">
+        </audio>
     </main>
     
     <!-- Hearts for animation -->
@@ -38,7 +39,7 @@
     <div class="heart heart4">❤️</div>
     <div class="heart heart5">❤️</div>
 
-<!-- Firebase SDK -->
+    <!-- Firebase SDK -->
     <script type="module">
         // Import the necessary Firebase SDKs
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
@@ -61,8 +62,6 @@
         const analytics = getAnalytics(app);
         const db = getFirestore(app);  // Initialize Firestore
     </script>
-</head>
-<body>
 
     <!-- Floating Chat Button -->
     <div id="chatButton" style="position: fixed; bottom: 20px; right: 20px; background-color: #007bff; color: white; padding: 10px 20px; border-radius: 50px; cursor: pointer; font-size: 16px;">Chat</div>
@@ -86,10 +85,9 @@
 
     <!-- Link to your external script.js -->
     <script src="script.js"></script>
+    
     <footer>
         <p>Made with love❤️</p>
     </footer>
-    
-    <script src="script.js"></script>
 </body>
 </html>
