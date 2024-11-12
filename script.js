@@ -59,10 +59,13 @@ const backgroundMusic = document.getElementById("backgroundMusic");
 // Start playing music when the page loads
 window.onload = function() {
     backgroundMusic.play().catch(error => {
-        // Handle autoplay restriction: if blocked, add click event listener to start music on user interaction
+        console.log("Autoplay blocked, waiting for user interaction to play audio.");
+        // If autoplay is blocked, add an event listener to start music on user interaction
         document.addEventListener("click", () => {
-            backgroundMusic.play();
-        }, { once: true }); // Only needs to be clicked once to start
+            backgroundMusic.play().catch(e => {
+                console.log("Failed to play audio on click:", e);
+            });
+        }, { once: true });
     });
 };
 
