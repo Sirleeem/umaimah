@@ -1,113 +1,42 @@
-const backgroundMusic = document.getElementById("backgroundMusic");
-const musicButton = document.getElementById("musicButton");
-const chatButton = document.getElementById("chatButton");
-const chatContainer = document.getElementById("chatContainer");
-
-musicButton.addEventListener("click", () => {
-    backgroundMusic.play().catch(error => {
-        document.addEventListener("click", () => {
-            backgroundMusic.play().catch(e => console.log("Failed to play audio:", e));
-        }, { once: true });
-    });
-    musicButton.style.display = "none";
-});
-
-const countdownDate = new Date("Jul 7, 2024 00:00:00").getTime();
+// Countdown Timer Logic
+const countdownDate = new Date("Jan 4, 2025 00:00:00").getTime(); // Change to your desired countdown date
 
 function updateCountdown() {
     const now = new Date().getTime();
     const distance = countdownDate - now;
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    document.getElementById("days").innerText = days;
-    document.getElementById("hours").innerText = hours;
-    document.getElementById("minutes").innerText = minutes;
-    document.getElementById("seconds").innerText = seconds;
-}
 
-setInterval(updateCountdown, 1000);
+    if (distance <= 0) {
+        // Countdown ended
+        const endDate = new Date(countdownDate);
+        const daysSinceEnded = Math.floor((now - countdownDate) / (1000 * 60 * 60 * 24));
 
-const messageLines = [
-    "Dear Insom,",
-    "Every moment with you is like a dream come true.",
-    "Your kindness, intelligence, and beauty light up my life in ways I never thought possible.",
-    "You make every day brighter, and I am endlessly grateful to have you by my side.",
-    "I love you more than words can express and am so excited for every new day we get to share together. ❤️",
-    "With all my love,",
-    "-Your Niac"
-];
-
-let lineIndex = 0;
-let charIndex = 0;
-const speed = 50;
-const messageElement = document.getElementById("loveMessage");
-
-function typeMessage() {
-    if (lineIndex < messageLines.length) {
-        if (charIndex < messageLines[lineIndex].length) {
-            messageElement.innerHTML += messageLines[lineIndex].charAt(charIndex);
-            charIndex++;
-            setTimeout(typeMessage, speed);
-        } else {
-            messageElement.innerHTML += "<br><br>";
-            charIndex = 0;
-            lineIndex++;
-            setTimeout(typeMessage, speed * 10);
-        }
-        messageElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
-    }
-}
-
-typeMessage();
-
-const loginForm = document.getElementById("loginForm");
-const usernameInput = document.getElementById("usernameInput");
-const loginButton = document.getElementById("loginButton");
-const chatInterface = document.getElementById("chatInterface");
-const messagesList = document.getElementById("messagesList");
-const messageInput = document.getElementById("messageInput");
-const sendButton = document.getElementById("sendButton");
-const errorMessage = document.createElement("div");
-errorMessage.style.color = "red";
-loginForm.appendChild(errorMessage);
-
-let currentUser = null;
-const allowedUsernames = ["Insom", "Niac"];
-
-chatButton.addEventListener("click", (event) => {
-    event.stopPropagation();
-    chatContainer.style.display = "flex";
-    loginForm.style.display = "block";
-    chatInterface.style.display = "none";
-});
-
-loginButton.addEventListener("click", () => {
-    const username = usernameInput.value.trim();
-    if (!allowedUsernames.includes(username)) {
-        errorMessage.textContent = "Invalid username. Only 'Insom' and 'Niac' are allowed.";
+        document.getElementById("countdown").style.display = "none";
+        document.getElementById("countdownEndedMessage").innerHTML =
+            `<p>The countdown ended <strong>${daysSinceEnded === 1 ? "yesterday" : daysSinceEnded + " days ago"}</strong>, marking the close of a cherished chapter. Here's to new beginnings.</p>
+             <p class="date">Countdown ended on: ${endDate.toDateString()}</p>`;
     } else {
-        errorMessage.textContent = "";
-        currentUser = username;
-        loginForm.style.display = "none";
-        chatInterface.style.display = "flex";
-    }
-});
+        // Display the remaining time (for future reference)
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-sendButton.addEventListener("click", () => {
-    const message = messageInput.value.trim();
-    if (message) {
-        const messageItem = document.createElement("li");
-        messageItem.innerHTML = `<strong>${currentUser}:</strong> ${message}`;
-        messagesList.appendChild(messageItem);
-        messageInput.value = "";
-        messagesList.scrollTop = messagesList.scrollHeight;
-    }
-});
+        document.getElementById("days").innerText = days;
+        document.getElementById("hours").innerText = hours;
+        document.getElementById("minutes").innerText = minutes;
+        document.getElementById("seconds").innerText = seconds;
 
-document.addEventListener("click", (event) => {
-    if (!chatContainer.contains(event.target) && event.target !== chatButton) {
-        chatContainer.style.display = "none";
+        // Stop updating after first calculation
+        clearInterval(intervalId);
     }
-});
+}
+
+// Call the countdown function once
+updateCountdown();
+
+// Stop the countdown from updating repeatedly
+const intervalId = setInterval(updateCountdown, 1000);
+
+// Display Best Wishes Message
+const bestWishesMessage = "Wishing you all the best in your journey ahead. Thank you for being part of mine.";
+document.getElementById("bestWishesMessage").innerText = bestWishesMessage;
