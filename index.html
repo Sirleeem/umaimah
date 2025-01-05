@@ -3,41 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Umaimah</title>
+    <title>Best Wishes</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>THE END</h1>
+        <h1>Best Wishes</h1>
     </header>
-    
-    <!-- Best Wishes Section -->
     <main>
+        <!-- Best Wishes Message -->
         <section class="message-section">
-            <!-- Best Wishes Message -->
-            <div id="bestWishesMessage">
-                <p>Wishing you all the best in your journey ahead. Thank you for being part of mine.</p>
-            </div>
+            <h2>Message for You</h2>
+            <p id="bestWishesMessage"></p>
         </section>
         
-        <!-- Countdown Section (Countdown Ended Message) -->
+        <!-- Countdown Section -->
         <section class="counter-section">
-            <h2>Our Time Together</h2>
+            <h2>Countdown</h2>
             <div id="countdown">
-                <!-- Countdown Ended Message -->
-                <div id="countdownEndedMessage">
-                    <p>The countdown has ended, marking the close of a cherished chapter. Here's to new beginnings.</p>
-                    <p class="date">Countdown ended on: [Insert Date Here]</p>
-                </div>
+                <div><span id="days">0</span><p>Days</p></div>
+                <div><span id="hours">0</span><p>Hours</p></div>
+                <div><span id="minutes">0</span><p>Minutes</p></div>
+                <div><span id="seconds">0</span><p>Seconds</p></div>
             </div>
+            <div id="countdownEndedMessage" style="display: none;"></div>
         </section>
     </main>
-
     <footer>
-        <p>Made with love❤️</p>
+        <p>With warm regards ❤️</p>
     </footer>
-
-    <!-- Link to the external JavaScript file -->
     <script src="script.js"></script>
 </body>
 </html>
