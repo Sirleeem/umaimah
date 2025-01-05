@@ -3,82 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Beloved Insom</title>
+    <title>Umaimah</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>My Insom❤️</h1>
+        <h1>THE END</h1>
     </header>
+    
+    <!-- Best Wishes Section -->
     <main>
         <section class="message-section">
             <h2>A Message for You</h2>
-            <p id="loveMessage"></p>
-        </section>
-        
-        <section class="counter-section">
-            <h2>Our Time Together</h2>
-            <div id="countdown">
-                <div><span id="days">0</span><p>Days</p></div>
-                <div><span id="hours">0</span><p>Hours</p></div>
-                <div><span id="minutes">0</span><p>Minutes</p></div>
-                <div><span id="seconds">0</span><p>Seconds</p></div>
+            <!-- Best Wishes Message -->
+            <div id="bestWishesMessage">
+                <p>Wishing you all the best in your journey ahead. Thank you for being part of mine.</p>
             </div>
         </section>
         
-        <audio id="backgroundMusic" loop>
-            <source src="https://www.dropbox.com/scl/fi/clpb7bhf79amehc7r4opv/Sound.mp3?rlkey=0mjk9poxkn7qgkg9wapf0ykpc&st=0putuz50&raw=1" type="audio/mp3">
-        </audio>
-
+        <!-- Countdown Section (Countdown Ended Message) -->
+        <section class="counter-section">
+            <h2>Our Time Together</h2>
+            <div id="countdown">
+                <!-- Countdown Ended Message -->
+                <div id="countdownEndedMessage">
+                    <p>The countdown has ended, marking the close of a cherished chapter. Here's to new beginnings.</p>
+                    <p class="date">Countdown ended on: [Insert Date Here]</p>
+                </div>
+            </div>
+        </section>
     </main>
-    
-    <div class="heart heart1">❤️</div>
-    <div class="heart heart2">❤️</div>
-    <div class="heart heart3">❤️</div>
-    <div class="heart heart4">❤️</div>
-    <div class="heart heart5">❤️</div>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
-        import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyDD5y3BorS3jHwJURqv-z0HsL3NLheNuvg",
-            authDomain: "chat-4116a.firebaseapp.com",
-            projectId: "chat-4116a",
-            storageBucket: "chat-4116a.firebasestorage.app",
-            messagingSenderId: "935196603199",
-            appId: "1:935196603199:web:3598c7f62151dca8dd598a",
-            measurementId: "G-NKWS35490E"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        getAnalytics(app);
-        window.db = getFirestore(app);
-    </script>
-
-
-    <div id="musicButton" style="position: fixed; bottom: 20px; right: 20px; background-color: #ff66b2; color: white; padding: 10px 20px; border-radius: 50px; cursor: pointer; font-size: 16px;">Play</div>
-
-    <div id="chatContainer" style="position: fixed; bottom: 70px; right: 20px; width: 300px; height: 400px; background-color: white; border: 1px solid #ccc; border-radius: 10px; display: none; flex-direction: column; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-        <div id="loginForm" style="display: flex; flex-direction: column; padding: 10px; align-items: center;">
-            <h3>Login</h3>
-            <input type="text" id="usernameInput" placeholder="Enter your username" style="margin: 10px; padding: 10px; width: 80%;" />
-            <button id="loginButton" style="background-color: #ff66b2; color: white; padding: 10px; width: 80%; cursor: pointer;">Login</button>
-        </div>
-
-        <div id="chatInterface" style="display: none; flex-direction: column;">
-            <ul id="messagesList" style="list-style: none; padding: 10px; margin: 0; height: 300px; overflow-y: scroll;"></ul>
-            <textarea id="messageInput" placeholder="Type a message..." style="width: 100%; padding: 10px; box-sizing: border-box;"></textarea>
-            <button id="sendButton" style="background-color: #ff66b2; color: white; border: none; padding: 10px; width: 100%; cursor: pointer;">Send</button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-    
     <footer>
-        <p>Made with love❤️ for Umaimah</p>
+        <p>Made with love❤️</p>
     </footer>
+
+    <!-- Script to Stop the Countdown -->
+    <script>
+        // Stop the countdown timer and hide the countdown section
+        function stopCountdown() {
+            document.getElementById("countdown").style.display = "none";
+        }
+
+        stopCountdown();  // Call this function to stop the countdown when the page loads
+    </script>
 </body>
 </html>
